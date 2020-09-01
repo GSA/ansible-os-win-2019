@@ -1,0 +1,13 @@
+name: 'GSA/[ROLE_NAME]'
+description: '[ROLE_DESCRIPTION]'
+license: cc0-1.0
+openSourceProject: 1
+governmentWideReuseProject: 1
+tags:
+    - open-source
+    - opensource
+    - grace
+    - devsecops
+    - ansible
+contact:
+    email: grace-staff@gsa.gov

@@ -1,0 +1,24 @@
+## Ansible roles ##
+__pycache__/
+.molecule/
+.pytest_cache/
+*-console.log
+
+# Mac attributes
+.DS_Store
+*/.DS_Store
+
+# IntelliJ’s project specific settings files/directory (Goland)
+.idea
+.idea/
+*.iml
+
+# vi/vim/GVim/MacVim backup files
+*.swp
+
+# VS Code
+/.vscode
+
+# Executables and insallers
+*.exe
+*.msi
