@@ -27,7 +27,7 @@ Please thoroughly review to ensure your organizational requirements are met.
 
 Example Playbook
 ----------------
-
+```
 ---
 - name: Harden Win2019 Server
   hosts: all
