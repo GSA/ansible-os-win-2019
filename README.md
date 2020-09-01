@@ -1,31 +1,41 @@
-Role Name
-=========
+Windows Server 2019 GSA Benchmark
+=================================
 
-A brief description of the role goes here.
+This Ansible content will configure a Windows Server 2019 machine to be GSA compliant.
 
-Requirements
-------------
+This role **will make changes to the system** that could impact its performance and/or availability.
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+For configuration compliance auditing, use a tool such as [Nessus](https://www.tenable.com/products/nessus) or [CIS-CAT](https://learn.cisecurity.org/cis-cat-lite)
 
-Role Variables
---------------
+This hardening content is based on the GSA Microsoft Windows Server 2019 Security Benchmark v1.0 and the [CIS Microsoft Windows Server 2019 Benchmark v1.1.0 ](https://www.cisecurity.org/cis-benchmarks/).
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Important Information
+---------------------
 
-Dependencies
-------------
+Before executing, you should carefully review the playbook tasks to make sure your systems will not be negatively impacted.
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Please thoroughly review to ensure your organizational requirements are met.
+
+##### The current default configuration will:
+* Configure all Windows Firewall controls except for "Ensure 'Windows Firewall - Public - Inbound connections' is set to 'Block (default)'"
+* Configure Windows Update controls
+
+##### The configuration will NOT:
+* Set the 'Minimum password length' to 16 or more characters
+* Configure 'Deny access to this computer from the network' to include Local Accounts
+* Configure 'Deny log on through Remote Desktop Services' to include Local Accounts
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+---
+- name: Harden Win2019 Server
+  hosts: all
+  tasks:
+       - include_role:
+           name: ansible-os-win-2019
+       - import_tasks:
+```
 
  Public domain
  -------------
