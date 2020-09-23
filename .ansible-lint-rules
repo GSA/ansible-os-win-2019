@@ -17,4 +17,6 @@ skip_list:
 - ANSIBLE0016
 - ANSIBLE0017
 - ANSIBLE0018
+- '106' # GSA standard for Ansible Role names do not match ``^[a-z][a-z0-9_]+$`` pattern
+- '204' # Some Ansible Task Name lines are longer than 160 chars to provide for an exact match to the CIS Setting Title
 verbosity: 1
