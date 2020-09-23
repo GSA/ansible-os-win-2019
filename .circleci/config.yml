@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   ansible_lint:
     docker:
@@ -15,7 +15,7 @@ jobs:
           name: Create symlink for role
           command: >
             mkdir -p ~/.ansible/roles
-              ln -s $(pwd) ~/.ansible/roles/${CIRCLE_PROJECT_REPONAME##*-}
+              ln -s $(pwd) ~/.ansible/roles/${CIRCLE_PROJECT_REPONAME}
       - run:
           name: Syntax check playbook
           command: pwd; ls; ansible-playbook --syntax-check tests/test.yml
@@ -34,7 +34,7 @@ jobs:
           command: yamllint -s .
 
 workflows:
-  version: 2
+  version: 2.1
   lint_and_test:
     jobs:
       - ansible_lint
