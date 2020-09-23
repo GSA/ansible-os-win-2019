@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
-  remote_user: root
+- hosts: all
+  become: yes
+  become_user: '{{ "ec2-user" if ansible_os_family == "Windows" else "root" }}'
   roles:
-    - template
+    - ansible-os-win-2019
