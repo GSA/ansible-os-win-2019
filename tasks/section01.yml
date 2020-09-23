@@ -11,7 +11,7 @@
         value: 24
      tags:
          - rule_1.1.1
-     
+
    - name: "1.1.2,CCE-37167-4 | Ensure 'Maximum password age' is set to '60 or fewer days, but not 0' [GSA-90]"
      win_security_policy:
         section: System Access

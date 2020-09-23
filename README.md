@@ -1,4 +1,4 @@
-Windows Server 2019 GSA Benchmark
+Windows Server 2019 GSA Benchmark   [![documentation](https://img.shields.io/badge/documentation-ansible-blue.svg)](https://docs.ansible.com/ansible/latest/user_guide/windows.html) [![CircleCI](https://circleci.com/gh/GSA/ansible-os-win-2019.svg?style=shield)](https://circleci.com/gh/GSA/ansible-os-win-2019)
 =================================
 
 This Ansible content will configure a Windows Server 2019 machine to be GSA compliant.
