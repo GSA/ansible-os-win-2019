@@ -1,12 +1,9 @@
 ---
-- name: Harden Win2019 Server
-  hosts: all
-  tasks:
-       - include_role:
+  - include_role:
            name: ansible-os-win-2019
-       - import_tasks: section01.yml
-       - import_tasks: section02.yml
-       - import_tasks: section09.yml
-       - import_tasks: section17.yml
-       - import_tasks: section18.yml
-       - import_tasks: section19.yml
+  - import_tasks: section01.yml
+  - import_tasks: section02.yml
+  - import_tasks: section09.yml
+  - import_tasks: section17.yml
+  - import_tasks: section18.yml
+  - import_tasks: section19.yml
