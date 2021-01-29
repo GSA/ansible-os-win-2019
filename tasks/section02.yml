@@ -395,7 +395,7 @@
   - rule_2.2.48
 
 - name: "2.3.1.1,CCE-37953-7 | Ensure 'Accounts -  Administrator account status' is set to 'Disabled'"
-   win_security_policy:
+  win_security_policy:
     section: System Access
     key: EnableAdminAccount
     value: 0
@@ -414,7 +414,7 @@
   - rule_2.3.1.2
 
 - name: "2.3.1.3,CCE-37432-2 | Ensure 'Accounts - Guest account status' is set to 'Disabled'"
-   win_security_policy:
+  win_security_policy:
     section: System Access
     key: EnableGuestAccount
     value: 0
@@ -433,7 +433,7 @@
   - rule_2.3.1.4
 
 - name: "2.3.1.5,CCE-38233-3 | Configure 'Accounts - Rename administrator account'"
-   win_security_policy:
+  win_security_policy:
     section: System Access
     key: NewAdministratorName
     value: GeorgeSharp
@@ -442,7 +442,7 @@
   - rule_2.3.1.5
 
 - name: "2.3.1.6,CCE-38027-9 | Configure 'Accounts - Rename guest account'"
-   win_security_policy:
+  win_security_policy:
     section: System Access
     key: NewGuestName
     value: BobCooper
@@ -712,7 +712,7 @@
 
 #CIS-CAT unable to audit this control for non-domain-joined nodes
 - name: "2.3.10.1,CCE-36065-1 | Ensure 'Network access - Allow anonymous SID/Name translation' is set to 'Disabled'"
-   win_security_policy:
+  win_security_policy:
     section: System Access
     key: LSAAnonymousNameLookup
     value: 0
