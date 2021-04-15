@@ -1,6 +1,0 @@
----
-- hosts: all
-  become: yes
-  become_user: '{{ "ec2-user" if ansible_os_family == "Windows" else "root" }}'
-  roles:
-    - ansible-os-win-2019

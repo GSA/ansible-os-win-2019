@@ -1,47 +1,49 @@
-Windows Server 2019 GSA Benchmark   [![documentation](https://img.shields.io/badge/documentation-ansible-blue.svg)](https://docs.ansible.com/ansible/latest/user_guide/windows.html) [![CircleCI](https://circleci.com/gh/GSA/ansible-os-win-2019.svg?style=shield)](https://circleci.com/gh/GSA/ansible-os-win-2019)
-=================================
+Windows Server 2019 GSA Benchmarks
+==================================
+Configure Windows 2019 machine to be GSA compliant. Level 1 and 2 findings will be corrected by default. It's based on [Windows Server 2019 GSA Benchmarks](https://docs.google.com/spreadsheets/d/1F6ZH8CPMkKYqO8q4VSddl2kEdZnpOjYwR5_UnVvHHu4).
 
-This Ansible content will configure a Windows Server 2019 machine to be GSA compliant.
 
-This role **will make changes to the system** that could impact its performance and/or availability.
+Role Variables
+--------------
+All the security configuration as per the GSA benchmark requirements are deployed by default. However, the users can control through the tags.
 
-For configuration compliance auditing, use a tool such as [Nessus](https://www.tenable.com/products/nessus) or [CIS-CAT](https://learn.cisecurity.org/cis-cat-lite)
+##### Following security configurations are hardened by this role:
+* Access, Authentication and Authorization Configurations
+* Windows Firewall Settings
+* Audit Policy Settings
+* Users configurations
 
-This hardening content is based on the GSA Microsoft Windows Server 2019 Security Benchmark v1.0 and the [CIS Microsoft Windows Server 2019 Benchmark v1.1.0 ](https://www.cisecurity.org/cis-benchmarks/).
+### Dependencies
+Ansible >= 2.7
 
-Important Information
----------------------
+### Example Playbook
 
-Before executing, you should carefully review the playbook tasks to make sure your systems will not be negatively impacted.
-
-Please thoroughly review to ensure your organizational requirements are met.
-
-##### The current default configuration will:
-* Configure all Windows Firewall controls except for "Ensure 'Windows Firewall - Public - Inbound connections' is set to 'Block (default)'"
-* Configure Windows Update controls
-
-##### The configuration will NOT:
-* Set the 'Minimum password length' to 16 or more characters
-* Configure 'Deny access to this computer from the network' to include Local Accounts
-* Configure 'Deny log on through Remote Desktop Services' to include Local Accounts
-
-Example Playbook
-----------------
 ```
 ---
-- name: Harden Win2019 Server
+- name: Harden Server
   hosts: all
-  tasks:
-       - include_role:
-           name: ansible-os-win-2019
-       - import_tasks:
+  become: yes
+
+  roles:
+    - ansible-os-win2019
 ```
 
- Public domain
- -------------
+### How to test locally
 
- This project is in the worldwide [public domain](LICENSE.md). As stated in [CONTRIBUTING](CONTRIBUTING.md):
+```
+ansible-playbook playbook.yml --connection=local
+```
+### CircleCI Intergration
 
- > This project is in the public domain within the United States, and copyright and related rights in the work worldwide are waived through the [CC0 1.0 Universal public domain dedication](https://creativecommons.org/publicdomain/zero/1.0/).
- >
- > All contributions to this project will be released under the CC0 dedication. By submitting a pull request, you are agreeing to comply with this waiver of copyright interest.
+This repository has been updated to optionally utilize Continuous Intergration with CircleCI and tests the ansbile tasks.  A low number of tasks are incompatiable when ran against a container vs a vm or bare-metal and have ignore_errors turned on.
+
+##### Using CircleCI:
+* Fork this repository or create a branch
+* Sign up for an account and follow the getting started guide at https://circleci.com/docs/2.0/first-steps/#section=getting-started
+* Add the repository to your projects and click start building. https://circleci.com/docs/2.0/project-build/#section=getting-started
+* New Commits will trigger the CircleCI build and run the playbook.yml and the result will pass or fail.
+
+### License
+
+BSD.
+
